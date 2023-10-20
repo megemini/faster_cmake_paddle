@@ -1,5 +1,5 @@
 # faster_cmake_paddle
-通过脚本将 `cmake` 需要拉取的 `github` 地址替换为 `gitclone`。
+通过脚本将 `cmake` 或 `make` 需要拉取的 `github` 地址替换为 `gitclone`。
 
 ### Step 1
 
@@ -18,10 +18,16 @@ $> chmod +x faster.sh
 通过 `faster.sh` 执行 `cmake` 命令，如：
 
 ``` shell
-./faster.sh time cmake .. -DPY_VERSION=3.8 -DWITH_GPU=OFF -DWITH_TESTING=ON
+$> ./faster.sh time cmake .. -DPY_VERSION=3.8 -DWITH_GPU=OFF -DWITH_TESTING=ON
 ```
 
-脚本会先 `patch` `github` 地址，然后执行后面的 `cmake` 命令，命令执行完之后再 `restore` 修改的文件。
+或者 `make`：
+
+``` shell
+$> ./faster.sh time make -j4
+```
+
+脚本会先 `patch` `github` 地址，然后执行后面的 `cmake` 或者 `make` 命令，命令执行完之后再 `restore` 修改的文件。
 
 也可以单独 `patch` `restore`，如：
 
