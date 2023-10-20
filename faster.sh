@@ -16,7 +16,7 @@ if [[ $1 == patch ]]; then
 elif [[ $1 == restore ]]; then
   restore
 
-elif [[ $1 == cmake || ( $1 == time && $2 == cmake ) ]]; then
+elif [[ ( $1 == cmake || $1 == make ) || ( $1 == time && ( $2 == cmake || $2 == make )) ]]; then
   patch
   eval $*
   restore
